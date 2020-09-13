@@ -95,19 +95,16 @@ class App extends React.Component {
             classes
         } = this.props;
 
-        return ( <
-            div className = {
-                classes["chart-container"]
-            } >
-            <
-            Chart data = {
-                this.state.lineChartData
-            }
-            options = {
-                this.state.lineChartOptions
-            }
-            /> <
-            /div>
+        return (<div className=
+            {classes["chart-container"]}>
+            <Chart
+                data={
+                    this.state.lineChartData
+                }
+                options={
+                    this.state.lineChartOptions
+                }
+            /> </div>
         );
     }
 }
