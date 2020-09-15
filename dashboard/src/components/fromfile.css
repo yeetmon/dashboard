@@ -1,0 +1,7 @@
+.topPanel { 
+    display: flex;
+}
+
+.topPanel__el {
+    margin-right: 50px;
+}
