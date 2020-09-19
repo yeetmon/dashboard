@@ -1,7 +1,14 @@
 .topPanel { 
     display: flex;
+    margin-bottom: 50px;
 }
 
 .topPanel__el {
     margin-right: 50px;
+}
+
+#date { 
+    margin-right: 20px;
+    margin-left: 20px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }

@@ -15,10 +15,14 @@ const HistoricalChart = ({data}) => {
         datasets: [{
             type: "line",
             label: "stack size",
-            backgroundColor: "rgba(0, 0, 0, 0)",
             borderWidth: "2",
             lineTension: 0,
-            data: formattedData
+            data: formattedData,
+            backgroundColor: 'rgba(247, 26, 255, 0.21)',
+            pointBackgroundColor: "#55bae7",
+            pointBorderColor: "#55bae7",
+            pointHoverBackgroundColor: "#55bae7",
+            pointHoverBorderColor: "#55bae7",
         }]
     }
 

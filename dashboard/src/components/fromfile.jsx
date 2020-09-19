@@ -36,6 +36,17 @@ class FromFile extends React.Component {
         this.loadFile();
     }
 
+    previousDay = () => {
+        // not sure if this is antipattern vibes..
+        this.state.date.setDate(this.state.date.getDate() - 1);
+        this.loadFile();
+    }
+
+    nextDay = () => {
+        this.state.date.setDate(this.state.date.getDate() + 1);
+        this.loadFile();
+    }
+
     handleSwitch = () => {
         this.setState({ eamon: !this.state.eamon });
         this.loadFile();
@@ -50,17 +61,17 @@ class FromFile extends React.Component {
         this.setState({ showCalendar: !this.state.showCalendar });
     }
 
-     showTimeSwitch = () => {
-         const day = this.state.date.getDay();
-         return day === 5 || day === 6;
-     }
+    showTimeSwitch = () => {
+        const day = this.state.date.getDay();
+        return day === 5 || day === 6;
+    }
 
     state = {
         data: null,
         loaded: false,
         date: null,
         eamon: true,
-        showCalendar: true,
+        showCalendar: false,
         night: true,
     };
 
@@ -80,12 +91,15 @@ class FromFile extends React.Component {
                 <>
                     <div className='topPanel'>
                         <div className='topPanel__el'>
-                            <PlayerSwitch handleSwitch={this.handleSwitch.bind(this)} id='topPanel__el' />
+                            <PlayerSwitch handleSwitch={this.handleSwitch.bind(this)} />
                         </div>
                         <div className='topPanel__el' style={{ display: this.showTimeSwitch() ? "block" : "none" }}>
                             <TimeSwitch handleSwitch={this.handleTimeSwitch.bind(this)} className='topPanel__el' />
                         </div>
-                        <button type="button" onClick={this.handleCalendarDisplay}>{this.state.showCalendar ? "hide" : "show"}</button>
+                        <button onClick={this.previousDay}>{"<"}</button>
+                        <p id="date">{dateFormat(this.state.date, "dd/mm/yyyy")}</p>
+                        <button onClick={this.nextDay} className='topPanel__el'>{">"}</button>
+                        <button type="button" onClick={this.handleCalendarDisplay}>{this.state.showCalendar ? "hide" : "show calendar"}</button>
                         <div style={{ display: this.state.showCalendar ? "block" : "none" }}>
                             <Calendar
                                 onChange={this.onDateChange}
@@ -93,7 +107,9 @@ class FromFile extends React.Component {
                             />
                         </div>
                     </div>
-                    <HistoricalChart data={this.state.data} />
+                    <div style={{position: 'relative', height:'60vh', width:'80vw'}}>
+                        <HistoricalChart data={this.state.data} />
+                    </div>
                 </>
             );
         }
