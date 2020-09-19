@@ -1,8 +1,5 @@
 import React from "react";
 import {
-    render
-} from "react-dom";
-import {
     withStyles
 } from "@material-ui/core/styles";
 import Chart from "./chart";
