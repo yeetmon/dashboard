@@ -28,33 +28,31 @@ class FromFile extends React.Component {
             fileName += '-day';
         }
         fileName += '.json';
-        return fileName
+        return fileName;
     }
 
     onDateChange = date => {
-        this.setState({ date });
-        this.loadFile();
+        this.setState({ date }, this.loadFile);
     }
 
     previousDay = () => {
-        // not sure if this is antipattern vibes..
-        this.state.date.setDate(this.state.date.getDate() - 1);
-        this.loadFile();
+        const prevData = new Date();
+        prevData.setDate(this.state.date.getDate() - 1);
+        this.setState({date: prevData}, this.loadFile);
     }
 
     nextDay = () => {
-        this.state.date.setDate(this.state.date.getDate() + 1);
-        this.loadFile();
+        const nextDate = new Date();
+        nextDate.setDate(this.state.date.getDate() + 1);
+        this.setState({date: nextDate}, this.loadFile);
     }
 
     handleSwitch = () => {
-        this.setState({ eamon: !this.state.eamon });
-        this.loadFile();
+        this.setState({ eamon: !this.state.eamon }, this.loadFile);
     }
 
     handleTimeSwitch = () => {
-        this.setState({ night: !this.state.night });
-        this.loadFile();
+        this.setState({ night: !this.state.night }, this.loadFile);
     }
 
     handleCalendarDisplay = () => {
