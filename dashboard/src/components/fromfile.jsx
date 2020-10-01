@@ -36,13 +36,13 @@ class FromFile extends React.Component {
     }
 
     previousDay = () => {
-        const prevData = new Date();
+        const prevData = new Date(this.state.date.getTime());
         prevData.setDate(this.state.date.getDate() - 1);
         this.setState({date: prevData}, this.loadFile);
     }
 
     nextDay = () => {
-        const nextDate = new Date();
+        const nextDate = new Date(this.state.date.getTime());
         nextDate.setDate(this.state.date.getDate() + 1);
         this.setState({date: nextDate}, this.loadFile);
     }
